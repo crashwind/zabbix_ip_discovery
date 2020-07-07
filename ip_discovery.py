@@ -43,6 +43,8 @@ def main(hostname, log_level):
         hostnames = hostname.split(',')
     elif ':' in hostname:
         hostnames = hostname.split(':')
+    else:
+        hostnames = [hostname]
 
     print(discover(hostnames))
 
