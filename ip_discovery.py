@@ -38,7 +38,12 @@ def main(hostname, log_level):
     except Exception as e:
         print('ERROR: {}'.format(e))
 
-    hostnames = hostname.split(',')
+    # zabbix: Special characters are not allowed in the parameters.
+    if ',' in hostname:
+        hostnames = hostname.split(',')
+    elif ':' in hostname:
+        hostnames = hostname.split(':')
+
     print(discover(hostnames))
 
 
